@@ -69,8 +69,8 @@ public:
 
   rasstoyanie() {}
   ~rasstoyanie() {}
-  double add_rasstoyanie(int now_rasstoyanie) {
-    now_rasstoyanie += now_rasstoyanie;
+  double add_rasstoyanie(int now_rasstoyanie_b) {
+    now_rasstoyanie += now_rasstoyanie_b;
     return now_rasstoyanie;
   }
   void null_rasstoyanie() { now_rasstoyanie = 0; }
@@ -86,7 +86,7 @@ int main_func() {
   double fps_buff = 0;
   int x = 0;
   int y = 0;
-  VideoCapture cap(0);
+  VideoCapture cap(0); //cоздание потока камеры из девайса /dev/video0
   namedWindow(window_capture_name);
   namedWindow(window_detection_name);
   int lastx = 0;
@@ -103,8 +103,8 @@ int main_func() {
                  on_low_V_thresh_trackbar);
   createTrackbar("High V", window_detection_name, &high_V, max_value,
                  on_high_V_thresh_trackbar);
-  Mat frame, frame_HSV, frame_threshold;
-  IplImage **dst = 0;
+  Mat frame, frame_HSV, frame_threshold; //создание матрицы преобразований
+  IplImage **dst = 0; //создание изображения
   auto path = frame;
   int iter = 0;
   fps_meter framer;
@@ -112,29 +112,29 @@ int main_func() {
   while (true) {
     int64 start = cv::getTickCount();
 
-    cap >> frame;
+    cap >> frame; //получение 1 кадра
     if (iter == 0) {
       path = frame;
-      cout << "Камеры нет)";
+      cout << "Камеры нет)"; //проверка существования кадра
       iter++;
     }
 
     if (frame.empty()) {
       break;
     }
-    cvtColor(frame, frame_HSV, COLOR_BGR2HSV);
+    cvtColor(frame, frame_HSV, COLOR_BGR2HSV);//преобразование rgb to hsv
     inRange(frame_HSV, Scalar(low_H, low_S, low_V),
-            Scalar(high_H, high_S, high_V), frame_threshold);
+            Scalar(high_H, high_S, high_V), frame_threshold);//шакаливание
     int Xc = 0;
     int Yc = 0;
     int counter = 0; // счётчик числа белых пикселей
     inRange(frame_HSV, Scalar(53, 55, 147), Scalar(83, 160, 255),
-            frame_threshold);
+            frame_threshold);// сразу с зеленым цветом без лишнего геморроя
 
-    auto moments1 = cv::moments(frame_threshold, 1);
-    int dM01 = moments1.m01;
-    int dM10 = moments1.m10;
-    int dArea = moments1.m00;
+    auto moments1 = cv::moments(frame_threshold, 1); //подсчет моментов изображения
+    int dM01 = moments1.m01;    //computing.... моменты по x
+    int dM10 = moments1.m10;    //computing.... моменты по y
+    int dArea = moments1.m00;   //computing.... моменты в общем случае
 
     if (dArea > 300) {
       x = int(dM10 / dArea);
@@ -142,7 +142,7 @@ int main_func() {
       if ((int(fps_buff) * int(sqrt((x - lastx) * (x - lastx) +
                                     (y - lasty) * (y - lasty)))) > 80) {
 
-        circle(frame, Point(x, y), 10, Scalar(255, 0, 0), -1);
+        circle(frame, Point(x, y), 10, Scalar(255, 0, 0), -1); //рисование точки в центре моментов изображения(искогомго объекта)
         CvFont font;
         cv::putText(frame,
                     "speed pix/t= " +
@@ -151,15 +151,15 @@ int main_func() {
                                                 (y - lasty) * (y - lasty)))),
                     Point(x, y), cv::FONT_HERSHEY_PLAIN, 2.0,
                     cv::Scalar(255, 0, 0));
-        navigator.add_rasstoyanie(
+        navigator.add_rasstoyanie(  //суммирование расстояний
             int(sqrt((x - lastx) * (x - lastx) + (y - lasty) * (y - lasty))));
         cv::putText(frame,
                     "speed mm/s = " + std::to_string(int(pix_toMmetr(
                                           Point(x, y), Point(lastx, lasty)))),
                     Point(300, 450), cv::FONT_HERSHEY_PLAIN, 2.0,
                     cv::Scalar(255, 0, 0));
-        line(path, Point(lastx, lasty), Point(x, y), Scalar(255, 0, 0), 5);
-      } else {
+        line(path, Point(lastx, lasty), Point(x, y), Scalar(255, 0, 0), 5); //линия вектора
+      } else { //когда оъект стоит
         circle(frame, Point(x, y), 10, Scalar(255, 0, 0), -1);
         CvFont font;
         cv::putText(frame, "speed pix/t= 0", Point(x, y),
@@ -186,11 +186,11 @@ int main_func() {
     imshow(window_detection_name, frame_threshold);
     char key;
     key = (char)waitKey(30);
-    if (key == 'q' || key == 27) {
+    if (key == 'q' || key == 27) { //выход 
 
       break;
     }
-    if (key == 'w' || key == 28) {
+    if (key == 'w' || key == 28) { //обнуление
 
       framer.cnt_frames = 0;
       navigator.now_rasstoyanie = 0;
