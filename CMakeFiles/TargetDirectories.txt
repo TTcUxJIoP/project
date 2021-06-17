@@ -1,0 +1,3 @@
+/home/miron/opencv/CMakeFiles/rebuild_cache.dir
+/home/miron/opencv/CMakeFiles/edit_cache.dir
+/home/miron/opencv/CMakeFiles/DisplayImage.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/proj.dir/fps.cpp.o CMakeFiles/proj.dir/qwe.cpp.o  -o proj  doctest/libdoctest.a 

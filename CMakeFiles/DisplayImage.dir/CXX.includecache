@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/miron/opencv/fps.cpp
+opencv2/core.hpp
+/home/miron/opencv/opencv2/core.hpp
+opencv2/highgui.hpp
+/home/miron/opencv/opencv2/highgui.hpp
+opencv2/imgproc.hpp
+/home/miron/opencv/opencv2/imgproc.hpp
+iostream
+-
+opencv2/core/core.hpp
+-
+opencv2/imgproc/imgproc.hpp
+-
+opencv2/imgproc/imgproc_c.h
+-
+string
+-
+
