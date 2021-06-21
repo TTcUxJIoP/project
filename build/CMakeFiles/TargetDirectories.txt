@@ -1,5 +1,0 @@
-/home/miron/opencv/build/CMakeFiles/rebuild_cache.dir
-/home/miron/opencv/build/CMakeFiles/edit_cache.dir
-/home/miron/opencv/build/CMakeFiles/check.dir
-/home/miron/opencv/build/CMakeFiles/mylib-unit-tests.dir
-/home/miron/opencv/build/CMakeFiles/DisplayImage.dir
