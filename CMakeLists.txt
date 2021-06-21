@@ -7,8 +7,8 @@ add_executable( DisplayImage fps.cpp )
 target_link_libraries( DisplayImage ${OpenCV_LIBS} )
 
 
-add_executable(mylib-unit-tests tests.cpp)
+add_executable(test tests.cpp)
 include_directories( ${OpenCV_INCLUDE_DIRS} )
-target_link_libraries( mylib-unit-tests ${OpenCV_LIBS} )
+target_link_libraries( test ${OpenCV_LIBS} )
 
-add_custom_target(check ALL COMMAND mylib-unit-tests)
+add_custom_target(check ALL COMMAND test)
