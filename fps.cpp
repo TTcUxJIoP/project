@@ -94,14 +94,8 @@ public:
   double tiks_summ = 0;
   unsigned long int cnt_frames = 0;
   unsigned long int _cnt_frames = 0;
-/**
- * конструктор класса fps_meter
- */
 
   fps_meter() {}
-  /**
- * деструктор класса fps_meter
- */
   ~fps_meter() {}
   /**
  * передается колличество тиков с начала обработки нового кадра, функция сохраняет данные и увеличивает счетчик фпс
@@ -123,13 +117,8 @@ class rasstoyanie {
 public:
   int now_rasstoyanie = 0;
 
-/**
- * конструктор класса rastoyanie
- */
+
   rasstoyanie() {}
-  /**
- * деструктор класса rastoyanie
- */
   ~rasstoyanie() {}
   /**
  * передавется расстояние которое прошел объект за 1 кадр, все данные суммируются в переменную now_rasstoyanie
