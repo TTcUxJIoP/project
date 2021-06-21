@@ -111,6 +111,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named check
+
+# Build rule for target.
+check: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 check
+.PHONY : check
+
+# fast build rule for target.
+check/fast:
+	$(MAKE) -f CMakeFiles/check.dir/build.make CMakeFiles/check.dir/build
+.PHONY : check/fast
+
+#=============================================================================
+# Target rules for targets named mylib-unit-tests
+
+# Build rule for target.
+mylib-unit-tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mylib-unit-tests
+.PHONY : mylib-unit-tests
+
+# fast build rule for target.
+mylib-unit-tests/fast:
+	$(MAKE) -f CMakeFiles/mylib-unit-tests.dir/build.make CMakeFiles/mylib-unit-tests.dir/build
+.PHONY : mylib-unit-tests/fast
+
+#=============================================================================
 # Target rules for targets named DisplayImage
 
 # Build rule for target.
@@ -150,6 +176,33 @@ fps.cpp.s:
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/fps.cpp.s
 .PHONY : fps.cpp.s
 
+tests.o: tests.cpp.o
+
+.PHONY : tests.o
+
+# target to build an object file
+tests.cpp.o:
+	$(MAKE) -f CMakeFiles/mylib-unit-tests.dir/build.make CMakeFiles/mylib-unit-tests.dir/tests.cpp.o
+.PHONY : tests.cpp.o
+
+tests.i: tests.cpp.i
+
+.PHONY : tests.i
+
+# target to preprocess a source file
+tests.cpp.i:
+	$(MAKE) -f CMakeFiles/mylib-unit-tests.dir/build.make CMakeFiles/mylib-unit-tests.dir/tests.cpp.i
+.PHONY : tests.cpp.i
+
+tests.s: tests.cpp.s
+
+.PHONY : tests.s
+
+# target to generate assembly for a file
+tests.cpp.s:
+	$(MAKE) -f CMakeFiles/mylib-unit-tests.dir/build.make CMakeFiles/mylib-unit-tests.dir/tests.cpp.s
+.PHONY : tests.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -158,10 +211,15 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... check"
+	@echo "... mylib-unit-tests"
 	@echo "... DisplayImage"
 	@echo "... fps.o"
 	@echo "... fps.i"
 	@echo "... fps.s"
+	@echo "... tests.o"
+	@echo "... tests.i"
+	@echo "... tests.s"
 .PHONY : help
 
 

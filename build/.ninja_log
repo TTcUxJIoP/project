@@ -1,0 +1,6 @@
+# ninja log v5
+0	565	1624296313392226890	CMakeFiles/DisplayImage.dir/fps.cpp.o	300d4088a5f86137
+565	746	1624296313572229331	DisplayImage	204166c20a73f306
+0	1455	1624296314280238928	doctest/CMakeFiles/doctest.dir/doctest.cpp.o	4f0f7922154efc69
+1455	1473	1624296314300239199	doctest/libdoctest.a	eec254cc3a567766
+1	1832	1624296621224118205	CMakeFiles/DisplayImage.dir/tests.cpp.o	eabfb91eb71f3b9c

@@ -1,0 +1,13 @@
+[
+{
+  "directory": "/home/miron/opencv/build",
+  "command": "/bin/g++-10   -I/usr/local/include/opencv  -g   -o CMakeFiles/mylib-unit-tests.dir/tests.cpp.o -c /home/miron/opencv/tests.cpp",
+  "file": "/home/miron/opencv/tests.cpp"
+},
+
+{
+  "directory": "/home/miron/opencv/build",
+  "command": "/bin/g++-10   -I/usr/local/include/opencv  -g   -o CMakeFiles/DisplayImage.dir/fps.cpp.o -c /home/miron/opencv/fps.cpp",
+  "file": "/home/miron/opencv/fps.cpp"
+}
+]
