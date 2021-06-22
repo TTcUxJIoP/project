@@ -2,7 +2,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #define test_env 1
 
-#include "doctest/doctest.h"
+#include "doctest.h"
 #include "fps.cpp"
 
 
